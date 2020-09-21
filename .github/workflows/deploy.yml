@@ -24,7 +24,7 @@ jobs:
         with:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
-          key: ${{ secrets.DO_SSH }}
+          password: ${{ secrets.DO_PW }}
           port: 22
           source: "."
           target: "/var/www"
@@ -34,7 +34,7 @@ jobs:
         with:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
-          key: ${{ secrets.DO_SSH }}
+          password: ${{ secrets.DO_PW }}
           port: 22
           script: |
             setup_server.sh
