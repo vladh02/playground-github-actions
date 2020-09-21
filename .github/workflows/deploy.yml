@@ -25,6 +25,7 @@ jobs:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
           password: ${{ secrets.DO_PW }}
+          port: 22
           source: "."
           target: "/var/www"
 
@@ -34,6 +35,7 @@ jobs:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
           password: ${{ secrets.DO_PW }}
+          port: 22
           script: |
             setup_server.sh
             npm install
