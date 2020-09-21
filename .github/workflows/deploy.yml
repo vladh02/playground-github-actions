@@ -1,40 +1,39 @@
 name: Manually triggered workflow
-on:
-  workflow_dispatch
+on: workflow_dispatch
 
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 14.11.0
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.11.0
-    - name: npm install, build, and test
-      run: |
-        # Build and test the project, then
-        # deploy to Azure Web App.
-        npm ci
-        npm run build --if-present
-        
-    # copy files to scp
-    - name: Copy file via scp
-      uses: appleboy/scp-action@master
-      env:
-        host: example.com
-        username: foo
-        password: bar
-        port: 22
-        source: "."
-        target: "/www"
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.18.4
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.18.4
+      - name: npm install, build, and test
+        run: |
+          # Build and test the project, then
+          # deploy to Azure Web App.
+          npm ci
+          npm run build --if-present
 
-    - name: Executing remote  command
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: cat /opt/app/README.md
+      # copy files to scp
+      - name: Copy file via scp
+        uses: appleboy/scp-action@master
+        env:
+          host: example.com
+          username: foo
+          password: bar
+          port: 22
+          source: "."
+          target: "/www"
+
+      - name: Executing remote  command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSHKEY }}
+          script: cat /opt/app/README.md
