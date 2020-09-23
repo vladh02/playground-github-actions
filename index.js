@@ -7,5 +7,3 @@ const handleRequest = (req, res) => {
 };
 
 http.createServer(handleRequest).listen(3000);
-
-module.exports = romanNumeralTranslator;
