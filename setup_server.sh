@@ -22,7 +22,7 @@ main
 
 npm install
 
-npm start
+npm start:pm2
 
 echo "SETUP_NODE_NVM_NVM: $NVM_DIR/nvm.sh"
 echo "SETUP_NODE_NVM_NODE: $(which node)"

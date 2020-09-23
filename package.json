@@ -7,9 +7,13 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
+    "start:pm2": "pm2 --name HelloWorld start npm -- start",
     "test": "jest index.test.js"
   },
   "devDependencies": {
     "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "pm2": "^4.4.1"
   }
 }
