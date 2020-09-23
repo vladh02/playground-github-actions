@@ -20,6 +20,10 @@ chmod +x "$NVM_DIR/nvm.sh"
 
 main
 
+npm install
+
+npm start
+
 echo "SETUP_NODE_NVM_NVM: $NVM_DIR/nvm.sh"
 echo "SETUP_NODE_NVM_NODE: $(which node)"
 echo "SETUP_NODE_NVM_NPM: $(which npm)"
