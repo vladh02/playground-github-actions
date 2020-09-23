@@ -39,6 +39,6 @@ jobs:
           script: |
             cd /var/www
             chmod +x ./setup_server.sh
-            sh ./setup_server.sh
+            ./setup_server.sh
             npm install
             npm start
